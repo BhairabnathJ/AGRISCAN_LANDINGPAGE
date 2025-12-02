@@ -1,0 +1,140 @@
+## Overall Design System
+
+**Typography & Spacing:**
+- Implement a fluid type scale with large, confident headlines (hero should be 72-96px on desktop)
+- Use generous white space—sections should breathe with 120-160px vertical padding
+- Create clear visual rhythm with consistent spacing multipliers (8px base grid)
+- Mix font weights strategically: ultra-bold for impact statements, light/regular for body copy
+
+**Color & Depth:**
+- Move away from flat backgrounds to subtle gradients and glass-morphism effects
+- Add depth with layered elements: floating cards with soft shadows (0 4px 24px rgba(0,0,0,0.06))
+- Use blur effects on background elements for visual depth
+- Implement a sophisticated color palette: deep greens (#1a4d2e primary), soft sage (#e8f3ed backgrounds), warm earth tones for accents
+- Add subtle animated gradient meshes in hero section backgrounds
+
+**Motion & Interaction:**
+- Add parallax scrolling effects—background elements move slower than foreground
+- Implement smooth scroll-triggered animations: fade-up, scale-in, blur-to-focus transitions
+- Animate stat counters when they enter viewport
+- Add hover states with smooth transforms (scale 1.02, lift with shadow increase)
+- Use easing functions like cubic-bezier(0.4, 0.0, 0.2, 1) for premium feel
+
+## Section-by-Section Improvements
+
+### Hero Section
+**Current Issues:** Static, cramped, buttons feel small
+**Redesign:**
+- Increase headline size dramatically, split into multiple lines with animated reveal
+- Add animated gradient mesh background with subtle movement
+- Make buttons larger (56px height), with primary having animated gradient background
+- Add floating device mockup image on right side with subtle float animation
+- Implement scroll indicator with animated chevron
+- Add particle effects or subtle geometric patterns in background
+
+### Problem Section (Challenge We're Solving)
+**Current Issues:** Card layout feels generic, icons are basic
+**Redesign:**
+- Transform into bento-grid layout with varying card sizes for visual interest
+- Add animated gradient borders on cards that activate on scroll
+- Implement number counters that animate up from 0 when visible
+- Use larger, custom iconography with subtle animations (pulse, rotate)
+- Add background texture or pattern to section
+- Make stats larger and more prominent—numbers should dominate, labels below
+
+### Solution Section (AgriScan: A Different Approach)
+**Current Issues:** Three-column layout is standard, cards lack hierarchy
+**Redesign:**
+- Create asymmetric layout: center card elevated and larger than flanking cards
+- Add glow effects around icons that pulse gently
+- Implement staggered fade-in animations (left card first, then center, then right)
+- Use frosted glass effect (backdrop-blur) on card backgrounds
+- Add subtle gradient background behind entire section
+- Make icons 3D or use illustration style instead of simple line icons
+
+### How It Works Section
+**Current Issues:** Linear timeline feels flat, lacks engagement
+**Redesign:**
+- Transform into interactive scrolling experience—each step reveals as you scroll
+- Add device mockup images showing actual interface for each step
+- Implement animated connection lines between steps that draw in on scroll
+- Use larger, bolder step indicators with animated fills
+- Add micro-interactions: hovering a step highlights it and shows additional context
+- Technical specs should be in expandable card with smooth accordion animation
+
+### Mission & Impact Section
+**Current Issues:** Dark green is heavy, cards feel cramped
+**Redesign:**
+- Use dark section but with gradient overlay and subtle pattern
+- Transform impact cards into larger, glowing elements with animated icons
+- Implement revealing number animations with trailing effects
+- Add parallax effect on background
+- Vision statement should be in featured callout box with soft glow
+- Consider adding video or animated graphic showing global impact
+
+### Roadmap Section
+**Current Issues:** Phase cards look like basic status indicators
+**Redesign:**
+- Create flowing timeline with animated progress bar connecting phases
+- Current phase should glow and pulse gently
+- Add hover states that expand cards to show more detail
+- Implement icon animations that reflect phase status (spinning for active, checkmark for complete)
+- Use z-axis layering: current phase elevated, future phases slightly receded
+- Add subtle particle effects flowing from completed to current phase
+
+### Beta Program Section
+**Current Issues:** Form feels generic and disconnected
+**Redesign:**
+- Transform into spotlight moment—form should feel like centerpiece
+- Add subtle animated gradient background
+- Use larger form fields with floating labels
+- Implement real-time validation with smooth feedback
+- Benefits section should have animated checkmarks that appear sequentially
+- Add visual indicator of form completion percentage
+- Create premium-feeling CTA button with animated gradient and hover lift effect
+
+### Team Section
+**Current Issues:** Avatar circles are basic, layout is flat
+**Redesign:**
+- Use larger team photos with sophisticated hover effects (zoom, color shift)
+- Add animated role tags that appear on hover
+- Implement staggered load animations
+- Funding and partners sections should feel more substantial—use larger numbers, add visual elements
+- Create cohesive design system for badges/tags
+
+### FAQ Section
+**Current Issues:** Standard accordion, lacks personality
+**Redesign:**
+- Add animated expansion with smooth height transitions
+- Use gradient dividers between questions
+- Implement icon animations when accordion opens/closes
+- Add subtle background color shift on expanded items
+- Make expand/collapse indicators more sophisticated (animated plus/minus or rotating chevron)
+
+## Technical Implementation Notes
+
+**Animations:**
+- Use Intersection Observer API for scroll-triggered animations
+- Implement CSS transforms for smooth 60fps animations
+- Add loading states with skeleton screens that animate in
+- Use requestAnimationFrame for custom animations
+
+**Performance:**
+- Lazy load images below fold
+- Use WebP format with PNG fallbacks
+- Implement progressive image loading with blur-up effect
+- Optimize animations to run on GPU (transform, opacity only)
+
+**Responsive Design:**
+- Mobile-first approach with touch-optimized interactions
+- Reduce animation complexity on mobile for performance
+- Adjust spacing scale for smaller screens (80px padding on mobile vs 160px desktop)
+- Stack complex layouts into single column below 768px
+
+**Accessibility:**
+- Maintain WCAG AA contrast ratios despite visual sophistication
+- Add reduced-motion media queries to disable animations
+- Ensure all interactive elements have proper focus states
+- Maintain semantic HTML structure
+
+Build this with React components, Tailwind CSS for styling, and Framer Motion for animations. Focus on creating a cohesive, premium experience that feels like a high-end product launch rather than a student project.

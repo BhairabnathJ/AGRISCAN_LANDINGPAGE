@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Sprout, CheckCircle } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FadeIn } from './ui';
 
 export default function BetaProgram() {
   const [formData, setFormData] = useState({
@@ -23,37 +25,71 @@ export default function BetaProgram() {
   };
 
   return (
-    <section id="beta-program" className="py-24 bg-gradient-to-br from-green-50 to-emerald-50">
-      <div className="max-w-4xl mx-auto px-6">
-        <div className="bg-white border-2 border-green-200 rounded-3xl p-12 shadow-2xl">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-6">
-              <Sprout className="w-8 h-8 text-green-600" />
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+    <section id="beta-program" className="relative py-32 bg-gradient-to-br from-sage-100 via-white to-primary-50 overflow-hidden">
+      {/* Animated gradient background */}
+      <motion.div
+        className="absolute inset-0 opacity-30"
+        animate={{
+          background: [
+            'radial-gradient(circle at 20% 50%, rgba(26, 77, 46, 0.15) 0%, transparent 50%)',
+            'radial-gradient(circle at 80% 50%, rgba(26, 77, 46, 0.15) 0%, transparent 50%)',
+            'radial-gradient(circle at 20% 50%, rgba(26, 77, 46, 0.15) 0%, transparent 50%)',
+          ]
+        }}
+        transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
+      />
+
+      <div className="relative max-w-4xl mx-auto px-6">
+        <motion.div
+          className="bg-white/80 backdrop-blur-lg border-2 border-primary-200 rounded-3xl p-8 lg:p-12 shadow-glow-lg"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <FadeIn className="text-center mb-12">
+            <motion.div
+              className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full mb-6 shadow-glow"
+              animate={{ rotate: [0, 5, -5, 0], scale: [1, 1.05, 1] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <Sprout className="w-10 h-10 text-white" />
+            </motion.div>
+            <h2 className="text-headline lg:text-display font-bold text-gray-900 mb-4">
               Help Us Validate AgriScan
             </h2>
-            <p className="text-xl text-gray-700">
+            <p className="text-xl lg:text-2xl text-gray-700 font-light">
               Join our beta program and get early access to AgriScan
             </p>
-          </div>
+          </FadeIn>
 
-          <div className="bg-green-50 border border-green-200 rounded-xl p-6 mb-8">
-            <h3 className="text-lg font-bold text-gray-900 mb-4">Beta Program Benefits:</h3>
-            <ul className="space-y-2">
-              {[
-                'Free or heavily subsidized device',
-                'Direct input on product development',
-                'Priority access to future features',
-                'Technical support throughout testing period',
-              ].map((benefit, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-700 font-medium">{benefit}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <FadeIn delay={0.2}>
+            <div className="bg-gradient-to-br from-primary-50 to-sage-50 border-2 border-primary-200 rounded-2xl p-8 mb-8">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Beta Program Benefits:</h3>
+              <ul className="space-y-4">
+                {[
+                  'Free or heavily subsidized device',
+                  'Direct input on product development',
+                  'Priority access to future features',
+                  'Technical support throughout testing period',
+                ].map((benefit, index) => (
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    className="flex items-start gap-4"
+                  >
+                    <div className="w-6 h-6 rounded-full bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center flex-shrink-0">
+                      <CheckCircle className="w-4 h-4 text-white" strokeWidth={3} />
+                    </div>
+                    <span className="text-gray-700 font-medium text-lg">{benefit}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+          </FadeIn>
 
           {!submitted ? (
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -168,7 +204,7 @@ export default function BetaProgram() {
               </p>
             </div>
           )}
-        </div>
+        </motion.div>
 
         <div className="mt-12 grid md:grid-cols-2 gap-6">
           <div className="bg-white border-2 border-gray-200 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
